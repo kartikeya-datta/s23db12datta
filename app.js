@@ -54,14 +54,14 @@ console.error(err)
 
 let instance2 = new novel({novel_name:"angerLove", novel_author:"vivekanandha", novel_pages:233});
 instance2.save().then(doc=>{
-console.log("First object saved")}
+console.log("Second object saved")}
 ).catch(err=>{
 console.error(err)
 });
 
 let instance3 = new novel({novel_name:"wings of freedom", novel_author:"abdul kalam", novel_pages:103});
 instance3.save().then(doc=>{
-console.log("First object saved")}
+console.log("Third object saved")}
 ).catch(err=>{
 console.error(err)
 });
