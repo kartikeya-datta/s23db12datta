@@ -3,13 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var novel = require("./models/novel");
 var indexRouter = require('./routes/index');
-var novelRouter = require('./routes/novel');
-var boardRouter = require('./routes/board');
-var chooseRouter = require('./routes/choose');
 var usersRouter = require('./routes/users');
+var NovelsRouter = require('./routes/novel');
+var resourceRouter = require('./routes/resource');
 
+require('dotenv').config();
+const connectionString =process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
 var app = express();
 
 // view engine setup
@@ -23,15 +26,62 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/novel', novelRouter);
-app.use('/board', boardRouter);
-app.use('/choose', chooseRouter);
 app.use('/users', usersRouter);
+app.use('/novel', NovelsRouter);
+app.use('/resource',resourceRouter);
+app.use();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")})
+//We can seed the collection if needed on
+async function recreateDB(){
+  
+await novel.deleteMany();
+let instance1 = new novel({novel_name:"angerLove", novel_author:"vivekanandha", novel_pages:233});
+instance1.save().then(doc=>{
+console.log("First object saved")}
+).catch(err=>{
+console.error(err)
+});
+
+let instance2 = new novel({novel_name:"angerLove", novel_author:"vivekanandha", novel_pages:233});
+instance2.save().then(doc=>{
+console.log("First object saved")}
+).catch(err=>{
+console.error(err)
+});
+
+let instance3 = new novel({novel_name:"wings of freedom", novel_author:"abdul kalam", novel_pages:103});
+instance3.save().then(doc=>{
+console.log("First object saved")}
+).catch(err=>{
+console.error(err)
+});
+}
+let reseed = true;
+if (reseed) {recreateDB();
+}
+// List of all Costumes
+exports.Novels_list = async function(req, res) {
+try{
+  console.log(`Triggered`);
+theNovels = await novel.find();
+res.send(theNovels);
+}
+catch(err){
+res.status(500);
+res.send(`{"error": ${err}}`);
+}
+};
+
 
 // error handler
 app.use(function(err, req, res, next) {
