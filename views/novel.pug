@@ -2,7 +2,7 @@ extends layout
 block content
     div(class="container-fluid")
         h1= title
-        - let results=[{novel_name:"angerLove", novel_author:"vivekanandha", novel_pages:233},{novel_name:"wings of freedom", novel_author:"abdul kalam", novel_pages:103},{novel_name:"gullivers", novel_author:"stepf", novel_pages:543}]
+        - const result=results 
           div(class="row")
             each form,item in results
                 div(class = "col-sm-2" ) #{form.novel_name}              

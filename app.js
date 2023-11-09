@@ -6,7 +6,7 @@ var logger = require('morgan');
 var novel = require("./models/novel");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var NovelsRouter = require('./routes/novel');
+var novelRouter = require('./routes/novel');
 var resourceRouter = require('./routes/resource');
 
 require('dotenv').config();
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/novel', NovelsRouter);
+app.use('/novel', novelRouter);
 app.use('/resource',resourceRouter);
 app.use();
 
@@ -70,11 +70,11 @@ let reseed = true;
 if (reseed) {recreateDB();
 }
 // List of all Costumes
-exports.Novels_list = async function(req, res) {
+exports.novel_list = async function(req, res) {
 try{
   console.log(`Triggered`);
-theNovels = await novel.find();
-res.send(theNovels);
+thenovel = await novel.find();
+res.send(thenovel);
 }
 catch(err){
 res.status(500);
