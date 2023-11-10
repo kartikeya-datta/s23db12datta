@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var novelRouter = require('./routes/novel');
 var resourceRouter = require('./routes/resource');
+var chooseRouter = require('./routes/choose');
+var boardRouter = require('./routes/board');
 
 require('dotenv').config();
 const connectionString =process.env.MONGO_CON
@@ -29,7 +31,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/novel', novelRouter);
 app.use('/resource',resourceRouter);
-app.use();
+app.use('/novel', novel);
+app.use('/choose',chooseRouter);
+app.use('/board',boardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
