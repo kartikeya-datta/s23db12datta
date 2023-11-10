@@ -52,7 +52,7 @@ console.log("First object saved")}
 console.error(err)
 });
 
-let instance2 = new novel({novel_name:"angerLove", novel_author:"vivekanandha", novel_pages:233});
+let instance2 = new novel({novel_name:"Harry Potter", novel_author:"jk rowing", novel_pages:633});
 instance2.save().then(doc=>{
 console.log("Second object saved")}
 ).catch(err=>{
