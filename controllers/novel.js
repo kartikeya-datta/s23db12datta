@@ -103,3 +103,16 @@ res.send(`{"error": ${err}: Update for id ${req.params.id}
 failed`);
 }
 };
+
+// Handle novel delete on DELETE.
+exports.novel_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await novel.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
