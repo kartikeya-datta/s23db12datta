@@ -7,4 +7,16 @@ router.get('/', novel_controlers.novel_view_all_Page );
 // GET request for one novel.
 router.get('/novel/:id', novel_controlers.novel_detail);
 
+/* GET detail novel page */
+router.get('/detail', novel_controlers.novel_view_one_Page);
+
+/* GET create novel page */
+router.get('/create', novel_controlers.novel_create_Page);
+
+/* GET create novel page */
+router.get('/create', novel_controlers.novel_create_Page);
+
+/* GET create update page */
+router.get('/update', novel_controlers.novel_update_Page);
+
 module.exports = router;

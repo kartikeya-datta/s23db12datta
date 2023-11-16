@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    h1= title
+    form(id='novelForm', action="/resource/novel", method="PUT")
+        div.form-group
+            label.novelAttr(for='novel_name') novel name
+            input#novel_name(type='text', name='novel_name')
+        div.form-group
+            label.novelAttr(for='author') novel author
+            input#author(type='text', name='author')
+        div.form-group
+            label.novelAttr(for='pages') novel pages
+            input#pages(type='number', name='pages')
+        input(type="submit")
+
+    script.
+        document.forms['novelForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted
+            fetch(event.target.action, {
+                method: 'PUT',
+                body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+                return resp.text(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+                alert("Save succeded")
+                // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Save failed " + error )
+            });
+        });
