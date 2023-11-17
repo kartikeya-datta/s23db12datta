@@ -1,25 +1,44 @@
-extends layout
-block content
-    div(class="container-fluid")
-        h1= title
-        - const result=results 
-          div(class="row")
-            each form,item in results
-                div(class = "col-sm-2" ) #{form.novel_name}              
-                div(class = "col-sm-2" ) #{form.novel_author}                
-                div(class = "col-sm-2" ) #{form.novel_pages}
+//- extends layout
+//- block content
+//-     div(class="container-fluid")
+//-         h1= title
+//-         - const result=results 
+//-           div(class="row")
+//-             each form,item in results
+//-                 div(class = "col-sm-2" ) #{form.novel_name}              
+//-                 div(class = "col-sm-2" ) #{form.novel_author}                
+//-                 div(class = "col-sm-2" ) #{form.novel_pages}
                 
     
-    br
-    h4= 'buy'
+//-     br
+//-     h4= 'buy'
 
-    div(class="container-fluid")
-      each novel,index in results
-        div(class="row", onclick=`buy(${index})`)
-          div(class="col-sm-2") <br>novel #{index}: #{novel.novel_name} author:#{novel.novel_author} pages:#{novel.novel_pages}
+//-     div(class="container-fluid")
+//-       each novel,index in results
+//-         div(class="row", onclick=`buy(${index})`)
+//-           div(class="col-sm-2") <br>novel #{index}: #{novel.novel_name} author:#{novel.novel_author} pages:#{novel.novel_pages}
 
-    script.
-        function buy(itemNo)
-        {
-            alert(`You purchased Item ${itemNo+1}`)
-        }
+//-     script.
+//-         function buy(itemNo)
+//-         {
+//-             alert(`You purchased Item ${itemNo+1}`)
+//-         }
+
+extends layout
+ 
+block content
+  h1= title
+  - let items = results;
+ 
+  div(class="container-fluid")
+    div(class="row m-1")
+      each item in items
+        - let destination = `dispatch("/novel/update?id=${item._id}")`
+        div(class="row-sm-2 m-1") Item #{item.novel_name}(#{item.novel_author}) is #{item.novel_pages}
+        button.btn(class="btn-primary ml-1", onclick=destination) Update
+ 
+  script.
+    function dispatch(path) {
+      window.location.href = path;
+    }
+ 
