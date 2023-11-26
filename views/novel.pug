@@ -29,16 +29,21 @@ extends layout
 block content
   h1= title
   - let items = results;
+    button.btn( class="btn-success", onclick= `dispatch(\"/novel/create")`) Create
  
   div(class="container-fluid")
     div(class="row m-1")
       each item in items
         - let destination = `dispatch("/novel/update?id=${item._id}")`
-        div(class="row-sm-2 m-1") Item #{item.novel_name}(#{item.novel_author}) is #{item.novel_pages}
-        button.btn(class="btn-primary ml-1", onclick=destination) Update
+        div(class="row-sm-2 m-1")
+          button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/novel/update?id=${item._id}\")`) Update
+          button.btn( class="btn-danger ml-1",  onclick= `dispatch(\"/novel/delete?id=${item._id}\")`) Delete
+          button.btn( class="btn-warning ml-1", onclick= `dispatch(\"/novel/detail?id=${item._id}\")`) Detail
+          p Name is #{item.novel_name}
+          p Type is #{item.novel_author}
+          p Cost is #{item.novel_pages}
  
   script.
     function dispatch(path) {
       window.location.href = path;
     }
- 
