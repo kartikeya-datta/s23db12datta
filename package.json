@@ -23,5 +23,6 @@
   "main": "app.js",
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "render server:https://f23wb12datta.onrender.com\r class is Novels my attributes are novel_name:(String) novel_author:(String) novel_pages:(Number)",
+  "devDependencies": {}
 }
