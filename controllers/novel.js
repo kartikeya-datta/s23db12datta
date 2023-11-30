@@ -85,13 +85,12 @@ ${JSON.stringify(req.body)}`)
 try {
 let toUpdate = await novel.findById( req.params.id)
 // Do updates of properties
-if(req.body.novel_name)
-toUpdate.novel_name = req.body.novel_name;
-if(req.body.author) toUpdate.author = req.body.author;
-if(req.body.pages) toUpdate.pages = req.body.pages;
+if(req.body.novel_name) toUpdate.novel_name = req.body.novel_name;
+if(req.body.novel_author) toUpdate.novel_author = req.body.novel_author;
+if(req.body.novel_pages) toUpdate.novel_pages = req.body.novel_pages;
 
-if(req.body.checkboxsale) toUpdate.sale = true;
-else toUpdate.same = false;
+// if(req.body.checkboxsale) toUpdate.sale = true;
+// else toUpdate.same = false;
 
 
 let result = await toUpdate.save();

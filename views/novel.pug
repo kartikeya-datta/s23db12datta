@@ -40,8 +40,8 @@ block content
           button.btn( class="btn-danger ml-1",  onclick= `dispatch(\"/novel/delete?id=${item._id}\")`) Delete
           button.btn( class="btn-warning ml-1", onclick= `dispatch(\"/novel/detail?id=${item._id}\")`) Detail
           p Name is #{item.novel_name}
-          p Type is #{item.novel_author}
-          p Cost is #{item.novel_pages}
+          p Author is #{item.novel_author}
+          p Pages is #{item.novel_pages}
  
   script.
     function dispatch(path) {

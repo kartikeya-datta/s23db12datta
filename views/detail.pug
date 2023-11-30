@@ -4,19 +4,19 @@ block content
     h1= title
 
     - let novelid = toShow._id
-    - let novelname = toShow.novel_name
-    - let novelauthor = toShow.novel_author
-    - let novelpages = toShow.novel_pages
+    - let novel_name = toShow.novel_name
+    - let novel_author = toShow.novel_author
+    - let novel_pages = toShow.novel_pages
      div
         div.row
             div(class='novelAttr mr-3') novel ID is:
             div #{novelid}
         div.row
             div(class='novelAttr mr-3') novel name is:
-            div #{novelname}
+            div #{novel_name}
         div.row
             div(class='novelAttr mr-3') novel author is:
-            div #{novelauthor}
+            div #{novel_author}
         div.row
             div(class='novelAttr mr-3') novel author is:
-            div #{novelpages} 
+            div #{novel_pages} 

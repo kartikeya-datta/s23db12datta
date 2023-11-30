@@ -23,12 +23,12 @@ router.get('/detail', novel_controlers.novel_view_one_Page);
 router.get('/create', novel_controlers.novel_create_Page);
 
 /* GET create novel page */
-router.get('/create', novel_controlers.novel_create_Page);
+router.get('/create',secured, novel_controlers.novel_create_Page);
 
 /* GET create update page */
 router.get('/update',secured, novel_controlers.novel_update_Page);
 
 /* GET delete novel page */
-router.get('/delete', novel_controlers.novel_delete_Page);
+router.get('/delete',secured, novel_controlers.novel_delete_Page);
 
 module.exports = router;

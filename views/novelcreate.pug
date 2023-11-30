@@ -7,11 +7,11 @@ block content
             label.novelAttr(for='novel_name') novel name
             input#novel_name(type='text', name='novel_name')
         div.form-group
-            label.novelAttr(for='author') novel author
-            input#author(type='text', name='author')
+            label.novelAttr(for='novel_author') novel author
+            input#novel_author(type='text', name='novel_author')
         div.form-group
-            label.novelAttr(for='pages') novel pages
-            input#pages(type='number', name='pages')
+            label.novelAttr(for='novel_pages') novel pages
+            input#novel_pages(type='number', name='novel_pages')
         input(type="submit")
 
     script.
@@ -25,6 +25,7 @@ block content
                 return resp.json(); // or resp.text() or whatever the server sends
             }).then((body) => {
                 alert("Save succeded")
+                window.location='/novel'
                 // TODO handle body
             }).catch((error) => {
                 // TODO handle error
